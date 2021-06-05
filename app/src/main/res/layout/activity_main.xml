@@ -31,5 +31,54 @@
         android:onClick="theme"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/countCrash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/count_crash"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="120sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appTitle" />
+
+    <ImageButton
+        android:id="@+id/addCrash"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="?attr/colorPrimary"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countCrash"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <ImageButton
+        android:id="@+id/removeCrash"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/colorPrimary"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCrash"
+        app:srcCompat="@drawable/ic_baseline_remove_24"
+        app:tint="?android:attr/textColorPrimary" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
