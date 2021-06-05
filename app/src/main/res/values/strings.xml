@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">crashs-app</string>
+    <string name="app_title">Crashs App</string>
 </resources>
