@@ -10,6 +10,7 @@ import com.example.crashs_app.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var checkedThemeGlobal = false
+    private var crashValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,12 +21,15 @@ class MainActivity : AppCompatActivity() {
 
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.apply {
-            val checked = getBoolean("CHECKED", false)
+            val checked = getBoolean("checked", false)
+            val getCrashValue = getInt("crashValue", 0)
             checkedThemeGlobal = checked
+            crashValue = getCrashValue
         }
 
         // Set them on startup
         setTheme()
+        setCrashValue(crashValue)
     }
 
     // Get and set theme using set Theme
@@ -33,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = pref.edit()
         var checked = binding.theme1.isChecked
-        editor.putBoolean("CHECKED", checked).apply()
+        editor.putBoolean("checked", checked).apply()
         checkedThemeGlobal = checked
 
         setTheme()
@@ -49,4 +53,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Set the crash value
+    fun setCrashValue(crashValue: Int) {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+        editor.putInt("crashValue", crashValue).apply()
+        binding.countCrash.text = crashValue.toString()
+    }
 }
