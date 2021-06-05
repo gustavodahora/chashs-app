@@ -3,7 +3,7 @@
     <style name="Theme.Crashsapp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@android:color/holo_red_light</item>
-        <item name="colorPrimaryVariant">@android:color/holo_orange_light</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@android:color/holo_purple</item>
