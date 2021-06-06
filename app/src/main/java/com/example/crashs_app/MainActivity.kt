@@ -1,19 +1,24 @@
 package com.example.crashs_app
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.crashs_app.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.Period
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var checkedThemeGlobal = false
     private var crashValue = 0
     private var formatedDateGlobal: String? = " "
+    private var formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         // Set them on startup
         setTheme()
         getDate()
+        setDaysWithoutCrash()
         setCrashValue(crashValue)
     }
 
@@ -71,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         crashValue++
         setCrashValue(crashValue)
         setDate()
+        setDaysWithoutCrash()
     }
 
     fun removeCrashValue(view: View?) {
@@ -89,12 +96,22 @@ class MainActivity : AppCompatActivity() {
         val editor = pref.edit()
 
         var currentDate = System.currentTimeMillis()
-        var formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         var tempFormatedDate = formatter.format(currentDate)
 
         formatedDateGlobal = tempFormatedDate
 
         editor.putString("crashDate", tempFormatedDate).apply()
+
         getDate()
+    }
+
+    fun setDaysWithoutCrash() {
+        var startDate = formatter.parse(formatedDateGlobal)
+        var endTime = System.currentTimeMillis()
+
+        var diff = endTime - startDate.time
+        var daysDiff =  diff / (1000 * 60 * 60 * 24)
+
+        binding.daysWithoutCrash.text = daysDiff.toString()
     }
 }
