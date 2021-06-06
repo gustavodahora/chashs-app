@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var checkedThemeGlobal = false
     private var crashValue = 0
-    private var formatedDate = " "
+    private var formatedDateGlobal: String? = " "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             val checked = getBoolean("checked", false)
             val getCrashValue = getInt("crashValue", 0)
             val formatedDate = getString("crashDate", "")
+            formatedDateGlobal = formatedDate
             checkedThemeGlobal = checked
             crashValue = getCrashValue
         }
@@ -80,20 +81,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getDate() {
-        binding.lastCrashDate.text = formatedDate
+        binding.lastCrashDate.text = formatedDateGlobal
     }
 
     fun setDate() {
-//        Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+
         var currentDate = System.currentTimeMillis()
         var formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         var tempFormatedDate = formatter.format(currentDate)
 
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.putString("crashDate", tempFormatedDate).apply()
+        formatedDateGlobal = tempFormatedDate
 
-        formatedDate = tempFormatedDate
+        editor.putString("crashDate", tempFormatedDate).apply()
         getDate()
     }
 }
