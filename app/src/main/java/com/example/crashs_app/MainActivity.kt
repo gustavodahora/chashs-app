@@ -55,9 +55,21 @@ class MainActivity : AppCompatActivity() {
 
     // Set the crash value
     fun setCrashValue(crashValue: Int) {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.putInt("crashValue", crashValue).apply()
-        binding.countCrash.text = crashValue.toString()
+        if (crashValue >= 0) {
+            val pref = PreferenceManager.getDefaultSharedPreferences(this)
+            val editor = pref.edit()
+            editor.putInt("crashValue", crashValue).apply()
+            binding.countCrash.text = crashValue.toString()
+        }
+    }
+
+    fun addCrashValue(view: View?) {
+        crashValue++
+        setCrashValue(crashValue)
+    }
+
+    fun removeCrashValue(view: View?) {
+        crashValue--
+        setCrashValue(crashValue)
     }
 }
