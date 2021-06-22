@@ -31,8 +31,14 @@ class MainActivity : AppCompatActivity() {
         pref.apply {
             val checked = getBoolean("checked", false)
             val getCrashValue = getInt("crashValue", 0)
-            val formatedDate = getString("crashDate", "")
-            formatedDateGlobal = formatedDate
+            val formatedDate = getString("crashDate", " ")
+
+                if (formatedDate == " ") {
+                    formatedDateGlobal = formatter.format(System.currentTimeMillis())
+            } else {
+                formatedDateGlobal = formatedDate
+            }
+
             checkedThemeGlobal = checked
             crashValue = getCrashValue
         }
@@ -114,4 +120,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.daysWithoutCrash.text = daysDiff.toString()
     }
+
+    
 }

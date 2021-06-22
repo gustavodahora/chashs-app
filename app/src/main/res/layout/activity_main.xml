@@ -20,18 +20,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/theme1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:drawableLeft="@drawable/ic_baseline_bedtime_24"
         android:onClick="theme"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/appTitle"
+        app:layout_constraintBottom_toBottomOf="@id/appTitle"
+        android:drawableStart="@drawable/ic_baseline_bedtime_24" />
 
     <TextView
         android:id="@+id/countCrash"
@@ -43,7 +44,8 @@
         android:textSize="120sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/appTitle"
+        app:layout_constraintBottom_toTopOf="@+id/addCrash"/>
 
     <ImageButton
         android:id="@+id/addCrash"
@@ -61,7 +63,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countCrash"
         app:srcCompat="@drawable/ic_baseline_add_24"
-        app:tint="?android:attr/textColorPrimary" />
+        app:tint="?android:attr/textColorPrimary"
+        android:contentDescription="@string/plus_button"
+        app:layout_constraintBottom_toTopOf="@+id/removeCrash"/>
 
     <ImageButton
         android:id="@+id/removeCrash"
@@ -80,7 +84,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCrash"
         app:srcCompat="@drawable/ic_baseline_remove_24"
-        app:tint="?android:attr/textColorPrimary" />
+        app:tint="?android:attr/textColorPrimary"
+        android:contentDescription="@string/minus_value"
+        app:layout_constraintBottom_toTopOf="@+id/lastDateCrashLabel"/>
 
     <TextView
         android:id="@+id/lastCrashDate"
@@ -93,7 +99,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastDateCrashLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/lastDateCrashLabel"
+        app:layout_constraintBottom_toTopOf="@id/daysWithoutCrashLabel"/>
 
     <TextView
         android:id="@+id/lastDateCrashLabel"
@@ -106,7 +113,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/removeCrash" />
+        app:layout_constraintTop_toBottomOf="@+id/removeCrash"
+        app:layout_constraintBottom_toTopOf="@id/lastCrashDate"/>
 
     <TextView
         android:id="@+id/daysWithoutCrashLabel"
@@ -119,7 +127,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastCrashDate" />
+        app:layout_constraintTop_toBottomOf="@+id/lastCrashDate"
+        app:layout_constraintBottom_toTopOf="@+id/daysWithoutCrash"/>
 
     <TextView
         android:id="@+id/daysWithoutCrash"
@@ -131,7 +140,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daysWithoutCrashLabel" />
-
+        app:layout_constraintTop_toBottomOf="@+id/daysWithoutCrashLabel"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

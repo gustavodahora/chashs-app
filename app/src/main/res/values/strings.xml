@@ -4,4 +4,6 @@
     <string name="count_crash">0</string>
     <string name="last_date_crash_label">Last Date Crash</string>
     <string name="days_without_crash_label">Days Without Crash</string>
+    <string name="plus_button">Plus button</string>
+    <string name="minus_value">Minus value</string>
 </resources>
